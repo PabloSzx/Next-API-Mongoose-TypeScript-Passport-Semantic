@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Router from "next/router";
 import { useContext, useEffect, useState } from "react";
+import { Button, Form, Input, Label, Message } from "semantic-ui-react";
 import { isEmail, isLength } from "validator";
 
 import { AuthContext } from "../src/client/components/Auth/Context";
@@ -25,33 +26,33 @@ const SignUpPage: NextPage = () => {
     <>
       {error && (
         <div>
-          <label>{error}</label>
+          <Message error>{error}</Message>
         </div>
       )}
-      <form
+      <Form
         onSubmit={async e => {
           e.preventDefault();
           signUp({ email, password });
         }}
       >
-        <label>Email</label>
-        <input
+        <Label>Email</Label>
+        <Input
           name="email"
           type="email"
           value={email}
           onChange={({ target: { value } }) => setEmail(value)}
         />
-        <label>Password</label>
-        <input
+        <Label>Password</Label>
+        <Input
           name="password"
           type="password"
           value={password}
           onChange={({ target: { value } }) => setPassword(value)}
         />
-        <button disabled={!valid} type="submit">
+        <Button primary disabled={!valid} type="submit">
           Sign Up
-        </button>
-      </form>
+        </Button>
+      </Form>
     </>
   );
 };

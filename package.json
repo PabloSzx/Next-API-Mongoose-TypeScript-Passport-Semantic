@@ -24,6 +24,7 @@
     "passport": "^0.4.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "semantic-ui-react": "^0.88.1",
     "validator": "^11.1.0"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FC, useContext } from "react";
+import { Button, Label } from "semantic-ui-react";
 
 import { AuthContext } from "../Auth/Context";
 
@@ -13,16 +14,18 @@ const Navigation: FC = () => {
     <nav>
       {user ? (
         <>
-          <p>Welcome {user.email}</p>
-          <button onClick={() => logout()}>Logout</button>
+          <Label>Welcome {user.email}</Label>
+          <Button color="red" onClick={() => logout()}>
+            Logout
+          </Button>
         </>
       ) : (
         <>
           <Link href="/login" passHref>
-            <button>Login</button>
+            <Button primary>Login</Button>
           </Link>
           <Link href="/signUp" passHref>
-            <button>Sign Up</button>
+            <Button color="green">Sign Up</Button>
           </Link>
         </>
       )}

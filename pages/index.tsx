@@ -1,6 +1,7 @@
 import useAxios from "axios-hooks";
 import { NextPage } from "next";
 import { FC, useContext } from "react";
+import { Label, List } from "semantic-ui-react";
 
 import { AuthContext } from "../src/client/components/Auth/Context";
 import { User } from "../src/interfaces";
@@ -18,16 +19,16 @@ const UsersList: FC = () => {
 
   return (
     <div>
-      <ol>
+      <List ordered animated divided>
         {data.map(({ email, password }, key) => (
-          <li key={key}>
-            <ul>
-              <li>Email: {email}</li>
-              <li>Password: {password}</li>
-            </ul>
-          </li>
+          <List.Item key={key}>
+            <List bulleted>
+              <List.Item>Email: {email}</List.Item>
+              <List.Item>Password: {password}</List.Item>
+            </List>
+          </List.Item>
         ))}
-      </ol>
+      </List>
     </div>
   );
 };
@@ -36,12 +37,12 @@ const Index: NextPage = () => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Label>Loading...</Label>;
   }
   if (user) {
     return <UsersList />;
   }
-  return <div>You need to be authenticated!</div>;
+  return <Label>You need to be authenticated!</Label>;
 };
 
 export default Index;
